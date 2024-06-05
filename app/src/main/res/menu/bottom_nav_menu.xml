@@ -7,12 +7,12 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/fab"
-        android:title="@string/title_camera"
-        android:icon="@drawable/ic_camera_24dp"/>
+        android:id="@+id/navigation_analyze"
+        android:title=""
+        android:enabled="false"/>
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_saved"
         android:icon="@drawable/ic_saved_24"
         android:title="@string/title_saved" />
 

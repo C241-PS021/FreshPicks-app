@@ -5,9 +5,10 @@
     <string name="description">Deskripsi</string>
     <string name="picture">Gambar</string>
     <string name="title_home">Home</string>
-    <string name="title_camera">Camera</string>
+    <string name="title_detect">Detect</string>
     <string name="title_saved">Saved</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="saved_result">Saved result</string>
+    <string name="camera_button">camera button</string>
 </resources>
