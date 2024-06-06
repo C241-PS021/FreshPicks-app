@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.mobile.freshpicks.databinding.ActivityMainBinding
-import com.mobile.freshpicks.view.detect.DetectFragment
 import com.mobile.freshpicks.view.home.HomeFragment
 import com.mobile.freshpicks.view.savedresult.SavedResultFragment
 
