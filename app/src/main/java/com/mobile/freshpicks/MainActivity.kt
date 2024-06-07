@@ -1,9 +1,12 @@
 package com.mobile.freshpicks
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import com.mobile.freshpicks.databinding.ActivityMainBinding
+import com.mobile.freshpicks.view.detect.AnalyzeOptionActivity
 import com.mobile.freshpicks.view.home.HomeFragment
 import com.mobile.freshpicks.view.savedresult.SavedResultFragment
 
@@ -27,12 +30,16 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        binding.fabDetect.setOnClickListener {
+            val intent = Intent(this@MainActivity, AnalyzeOptionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout, fragment)
-        fragmentTransaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
     }
 }
