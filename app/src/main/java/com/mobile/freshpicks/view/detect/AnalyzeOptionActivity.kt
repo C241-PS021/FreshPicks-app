@@ -15,11 +15,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.mobile.freshpicks.MainActivity
 import com.mobile.freshpicks.databinding.ActivityAnalyzeOptionBinding
+import com.mobile.freshpicks.helper.ImageClassifierHelper
 import com.mobile.freshpicks.view.utils.getImageUri
+import org.tensorflow.lite.task.vision.classifier.Classifications
 
 class AnalyzeOptionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAnalyzeOptionBinding
+    private lateinit var imageClassifierHelper: ImageClassifierHelper
 
     private var currentImageUri: Uri? = null
 
@@ -57,7 +60,7 @@ class AnalyzeOptionActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
+        binding.analyzeButton.setOnClickListener { analyzeImage() }
     }
 
     private fun startCamera() {
@@ -93,6 +96,48 @@ class AnalyzeOptionActivity : AppCompatActivity() {
             Log.d("Image URI", "showImage: $it")
             binding.ivPreview.setImageURI(it)
         }
+    }
+
+    private fun analyzeImage() {
+        currentImageUri?.let { uri ->
+            imageClassifierHelper = ImageClassifierHelper(
+                context = this,
+                classifierListener = object : ImageClassifierHelper.ClassifierListener {
+                    override fun onResults(results: List<Classifications>?, inferenceTime: Long) {
+                        runOnUiThread {
+                            results?.let {
+                                if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
+                                    val displayResult = it[0].categories[0]
+
+                                    moveToResult(displayResult.label, displayResult.score)
+                                }
+                            }
+                        }
+                    }
+
+                    override fun onError(error: String) {
+                        runOnUiThread {
+                            showToast(error)
+                        }
+                    }
+                }
+            )
+
+            imageClassifierHelper.classifyStaticImage(uri)
+        }
+
+    }
+
+    private fun moveToResult(label: String, score: Float) {
+        val intent = Intent(this, AnalyzeResultActivity::class.java)
+        intent.putExtra("imageUri", currentImageUri.toString())
+        intent.putExtra("label", label)
+        intent.putExtra("score", score)
+        startActivity(intent)
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     companion object {
