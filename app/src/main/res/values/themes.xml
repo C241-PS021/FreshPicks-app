@@ -14,5 +14,6 @@
         <item name="colorPrimaryVariant">#EEEDDE</item>
         <item name="colorOnPrimary">#000</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="fontFamily">@font/dmsans_light</item>
     </style>
 </resources>

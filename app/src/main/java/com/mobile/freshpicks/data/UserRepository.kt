@@ -25,8 +25,7 @@ import java.io.ByteArrayOutputStream
 
 class UserRepository (
     private val apiService: ApiService,
-    private val userPreference: UserPreference,
-    private val contentResolver: ContentResolver
+    private val userPreference: UserPreference
 ) {
 
     suspend fun saveSession(user: UserModel) {
@@ -58,46 +57,33 @@ class UserRepository (
     }
 
     suspend fun uploadScanResult(
-        token: String,
-        imageUri: Uri, // Change parameter to Uri
-        fruitName: String,
-        scanResult: String
+        image: MultipartBody.Part,
+        fruitName: RequestBody,
+        scanResult: RequestBody
     ): UploadResultResponse {
-
-        // Convert Uri to Bitmap
-        val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, imageUri))
-        } else {
-            @Suppress("DEPRECATION")
-            MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
-        }
-
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
-        val imageByteArray = byteArrayOutputStream.toByteArray()
-
-        val requestFile = RequestBody.create("image/jpeg".toMediaTypeOrNull(), imageByteArray)
-        val imagePart = MultipartBody.Part.createFormData("image", "image.jpg", requestFile)
-
-        val fruitNamePart = RequestBody.create("text/plain".toMediaTypeOrNull(), fruitName)
-        val scanResultPart = RequestBody.create("text/plain".toMediaTypeOrNull(), scanResult)
-
-        return apiService.uploadScanResult(token, imagePart, fruitNamePart, scanResultPart)
+        return apiService.uploadScanResult(image, fruitName, scanResult)
     }
 
     suspend fun getUserHistory(
-        token: String,
         fruitName: String,
         scanResult: String
     ): GetUserHistoryResponse {
-        return apiService.getUserHistory(token, fruitName, scanResult)
+        return apiService.getUserHistory(fruitName, scanResult)
     }
 
-    suspend fun deleteHistoryByID(token: String, scanID: String): DeleteHistoryByScanIDResponse {
-        return apiService.deleteHistoryByID(token, scanID)
+    suspend fun deleteHistoryByID(scanID: String): DeleteHistoryByScanIDResponse {
+        return apiService.deleteHistoryByID(scanID)
     }
 
-    suspend fun deleteAllHistory(token: String): DeleteAllHistoryResponse {
-        return apiService.deleteAllHistory(token)
+    suspend fun deleteAllHistory(): DeleteAllHistoryResponse {
+        return apiService.deleteAllHistory()
+    }
+
+    companion object {
+        @Volatile
+        private var instance: UserRepository? = null
+
+        fun getInstance(apiService: ApiService, userPreference: UserPreference) =
+            UserRepository(apiService, userPreference)
     }
 }

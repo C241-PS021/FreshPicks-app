@@ -45,7 +45,6 @@ interface ApiService {
     @Multipart
     @POST("/user/scan-result-history")
     suspend fun uploadScanResult (
-        @Header("Authorization") token: String,
         @Part image: MultipartBody.Part,
         @Part("fruitName") fruitName: RequestBody,
         @Part("scanResult") scanResult: RequestBody
@@ -53,19 +52,15 @@ interface ApiService {
 
     @GET("/user/scan-result-history")
     suspend fun getUserHistory (
-        @Header("Authorization") token: String,
         @Query("fruitName") fruitName: String,
         @Query("scanResult") scanResult: String
     ): GetUserHistoryResponse
 
     @DELETE("/user/scan-result-history/{scanID}")
     suspend fun deleteHistoryByID (
-        @Header("Authorization") token: String,
         @Path("scanID") scanID: String
     ): DeleteHistoryByScanIDResponse
 
     @DELETE("/user/scan-result-history")
-    suspend fun deleteAllHistory (
-        @Header("Authorization") token: String
-    ): DeleteAllHistoryResponse
+    suspend fun deleteAllHistory (): DeleteAllHistoryResponse
 }

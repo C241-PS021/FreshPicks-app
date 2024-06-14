@@ -16,4 +16,18 @@
     <string name="analyze">Analyze</string>
     <string name="detection_result_description">Akurasi: %1$s \nKategori: %2$s</string>
     <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+    <string name="email_error">Email is not valid</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="save_result">Save result</string>
+    <string name="pass_error">Password cannot be less than 8 characters</string>
+    <string name="desc_signup_page">Please fill the forms below</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="has_account">Already have an account?</string>
+    <string name="login">Sign In</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="desc_login_page">Please sign in to your account</string>
+    <string name="new_user">New to FreshPicks?</string>
 </resources>

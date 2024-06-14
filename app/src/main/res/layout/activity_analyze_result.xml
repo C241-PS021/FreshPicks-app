@@ -10,12 +10,12 @@
         android:id="@+id/iv_preview"
         android:layout_width="376dp"
         android:layout_height="380dp"
-        android:layout_marginVertical="24dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="24dp"
         android:contentDescription="@string/image_preview"
         android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_place_holder" />
 
@@ -23,10 +23,41 @@
         android:id="@+id/tv_result"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/detection_result_description"
         app:layout_constraintStart_toStartOf="@id/iv_preview"
-        app:layout_constraintTop_toBottomOf="@id/iv_preview"/>
+        app:layout_constraintTop_toBottomOf="@id/iv_preview" />
+
+    <Button
+        android:id="@+id/back_to_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primary"
+        android:text="@string/back_to_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"/>
+
+    <Button
+        android:id="@+id/save_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primary"
+        android:text="@string/save_result"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50121653" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
