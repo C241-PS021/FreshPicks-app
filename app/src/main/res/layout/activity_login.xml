@@ -44,12 +44,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:alpha="0"
         android:text="@string/email"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/messageTextView"
-        tools:alpha="100" />
+        app:layout_constraintTop_toBottomOf="@+id/messageTextView"/>
 
     <com.mobile.freshpicks.view.customview.CustomEmailInputLayout
         android:id="@+id/emailEditTextLayout"
@@ -64,7 +62,7 @@
         app:startIconDrawable="@drawable/ic_email_24" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_login_username"
+            android:id="@+id/ed_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -142,11 +140,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:gravity="end"
-            android:alpha="0"
             android:text="@string/new_user"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:alpha="100">
+            app:layout_constraintTop_toTopOf="parent" >
 
         </TextView>
 
@@ -160,11 +156,9 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="start"
-            android:alpha="0"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/not_registered_tv"
-            tools:alpha="100"/>
+            app:layout_constraintStart_toEndOf="@id/not_registered_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

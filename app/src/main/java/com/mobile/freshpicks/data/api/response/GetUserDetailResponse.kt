@@ -14,5 +14,5 @@ data class GetUserDetailResponse (
     val userID: String,
 
     @field:SerializedName("data")
-    val data: DataRegister
+    val data: DataLogin
 )

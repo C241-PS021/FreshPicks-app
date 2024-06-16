@@ -71,7 +71,6 @@ dependencies {
     implementation(libs.retrofit2.converter.gson)
 
     // TensorFlow Library
-    // TensorFlow Library
     implementation(libs.tensorflow.lite)
     implementation(libs.tensorflow.lite.task.vision)
     implementation(libs.tensorflow.lite.support)

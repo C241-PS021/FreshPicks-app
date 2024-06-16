@@ -3,11 +3,8 @@ package com.mobile.freshpicks.view.detect
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.mobile.freshpicks.MainActivity
+import com.mobile.freshpicks.view.main.MainActivity
 import com.mobile.freshpicks.R
 import com.mobile.freshpicks.databinding.ActivityAnalyzeResultBinding
 import java.text.NumberFormat

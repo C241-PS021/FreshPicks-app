@@ -30,4 +30,13 @@
     <string name="welcome_back">Welcome Back!</string>
     <string name="desc_login_page">Please sign in to your account</string>
     <string name="new_user">New to FreshPicks?</string>
+    <string name="field_not_filled">Ada yang belum kamu isi nih, yuk di cek lagi!</string>
+    <string name="login_success">Login success! Let\'s head out to homescreen</string>
+    <string name="wrong_account_details">Password atau username salah atau mungkin akun kamu belum terdaftar</string>
+    <string name="register_success">You have successfully registered</string>
+    <string name="registered_email">The email has been registered, please try another one</string>
+    <string name="next">Continue</string>
+    <string name="oops">Oops!</string>
+    <string name="yeah">Yeah!</string>
+    <string name="no_results_saved">You haven\'t save any results yet</string>
 </resources>

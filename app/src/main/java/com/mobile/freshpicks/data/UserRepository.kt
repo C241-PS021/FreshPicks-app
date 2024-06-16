@@ -9,6 +9,7 @@ import android.os.Build
 import android.provider.MediaStore
 import com.mobile.freshpicks.data.api.response.DeleteAllHistoryResponse
 import com.mobile.freshpicks.data.api.response.DeleteHistoryByScanIDResponse
+import com.mobile.freshpicks.data.api.response.GetFruitListResponse
 import com.mobile.freshpicks.data.api.response.GetUserDetailResponse
 import com.mobile.freshpicks.data.api.response.GetUserHistoryResponse
 import com.mobile.freshpicks.data.api.response.LoginResponse
@@ -54,6 +55,10 @@ class UserRepository (
 
     suspend fun getUserDetail(token: String): GetUserDetailResponse {
         return apiService.getUserDetail(token)
+    }
+
+    suspend fun getFruitsList(): GetFruitListResponse {
+        return apiService.getFruitsList()
     }
 
     suspend fun uploadScanResult(

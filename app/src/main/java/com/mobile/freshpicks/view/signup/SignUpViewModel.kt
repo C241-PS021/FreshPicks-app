@@ -26,8 +26,7 @@ class SignUpViewModel(private val repository: UserRepository) : ViewModel() {
             } catch (e: Exception) {
                 e.printStackTrace()
                 withContext(Dispatchers.Main) {
-                    // TODO: progress on hold
-                    // callback(RegisterResponse(message = e.localizedMessage))
+                     callback(RegisterResponse(error = true, message = e.localizedMessage))
                 }
             } finally {
                 _isLoading.value = false

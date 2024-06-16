@@ -2,6 +2,7 @@ package com.mobile.freshpicks.data.api.retrofit
 
 import com.mobile.freshpicks.data.api.response.DeleteAllHistoryResponse
 import com.mobile.freshpicks.data.api.response.DeleteHistoryByScanIDResponse
+import com.mobile.freshpicks.data.api.response.GetFruitListResponse
 import com.mobile.freshpicks.data.api.response.GetUserDetailResponse
 import com.mobile.freshpicks.data.api.response.GetUserHistoryResponse
 import com.mobile.freshpicks.data.api.response.LoginResponse
@@ -23,7 +24,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @FormUrlEncoded
-    @POST("/register")
+    @POST("register")
     suspend fun register (
         @Field("username") username: String,
         @Field("email") email: String,
@@ -31,7 +32,7 @@ interface ApiService {
     ): RegisterResponse
 
     @FormUrlEncoded
-    @POST("/login")
+    @POST("login")
     suspend fun login (
         @Field("email") email: String,
         @Field("password") password: String
@@ -55,6 +56,9 @@ interface ApiService {
         @Query("fruitName") fruitName: String,
         @Query("scanResult") scanResult: String
     ): GetUserHistoryResponse
+
+    @GET("fruits")
+    suspend fun getFruitsList () : GetFruitListResponse
 
     @DELETE("/user/scan-result-history/{scanID}")
     suspend fun deleteHistoryByID (

@@ -21,7 +21,6 @@ object ApiConfig {
             val req = chain.request()
             val requestHeaders = req.newBuilder()
                 .addHeader("Authorization", "Bearer $token")
-                .addHeader("Accept", "application/json")
                 .build()
             chain.proceed(requestHeaders)
         }
