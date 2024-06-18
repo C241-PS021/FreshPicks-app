@@ -6,8 +6,10 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.util.toAndroidPair
 import com.mobile.freshpicks.view.main.MainActivity
 import com.mobile.freshpicks.R
 import com.mobile.freshpicks.databinding.ActivityAnalyzeResultBinding
@@ -52,24 +54,38 @@ class AnalyzeResultActivity : AppCompatActivity() {
         }
         binding.saveResult.setOnClickListener {
             val splitText = splitCamelCase(textLabel!!)
-            val fruitName = splitText.first
-            val scanResult = "${splitText.second} (${textScore})"
+            val fruitName = splitText.second
+            val score = textScore * 100
+            val scanResult = "${splitText.first} (${score.format(1)}%)"
 
             saveResult(imageUri, fruitName, scanResult)
+        }
+
+        viewModel.isSuccess.observe(this) { isSuccess ->
+            if (isSuccess) {
+                Toast.makeText(this, "Result saved!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Failed to save result", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     private fun splitCamelCase(input: String): Pair<String, String> {
         val parts = input.split("(?=[A-Z])".toRegex())
-        return Pair(parts[0], parts[1])
+        return Pair(parts[1], parts[2])
     }
+
+    private fun Float.format(digits: Int) = "%.${digits}f".format(this)
 
     private fun saveResult(imageUri: Uri?, fruitNameString: String, scanResultString: String) {
         val file = imageUri?.let { uri ->
             val tempFile = getFileFromUri(uri)?.reduceFileImage()
             tempFile?.let {
                 val requestFile = it.asRequestBody("image/jpeg".toMediaType())
-                MultipartBody.Part.createFormData("photo", it.name, requestFile)
+                MultipartBody.Part.createFormData("image", it.name, requestFile)
             }
         }
 
@@ -83,15 +99,7 @@ class AnalyzeResultActivity : AppCompatActivity() {
             Log.e("AddStoryActivity", "File is null")
         }
 
-        viewModel.isSuccess.observe(this) { isSuccess ->
-            if (isSuccess) {
-                val intent = Intent(this, MainActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-            } else {
-                Log.d("Upload story: ", "Errorrrrrr")
-            }
-        }
+
     }
 
     private fun getFileFromUri(uri: Uri): File? {

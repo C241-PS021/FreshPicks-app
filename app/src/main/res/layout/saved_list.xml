@@ -16,11 +16,11 @@
             android:id="@+id/iv_item_photo"
             android:layout_width="148dp"
             android:layout_height="156dp"
-            android:scaleType="centerCrop"
             android:contentDescription="@string/picture"
-            tools:src="@tools:sample/avatars"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tv_item_name"

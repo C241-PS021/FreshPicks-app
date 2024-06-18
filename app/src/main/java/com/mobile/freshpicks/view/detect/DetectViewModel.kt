@@ -35,9 +35,9 @@ class DetectViewModel(private val repository: UserRepository) : ViewModel() {
                 _isSuccess.value = true
             } catch (e: Exception) {
                 e.printStackTrace()
+                _isSuccess.value = false
             } finally {
                 _isLoading.value = false
-                _isSuccess.value = false
             }
         }
     }
