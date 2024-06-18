@@ -44,7 +44,7 @@ interface ApiService {
     ): GetUserDetailResponse
 
     @Multipart
-    @POST("/user/scan-result-history")
+    @POST("user/scan-result-history")
     suspend fun uploadScanResult (
         @Part image: MultipartBody.Part,
         @Part("fruitName") fruitName: RequestBody,
@@ -53,14 +53,12 @@ interface ApiService {
 
     @GET("/user/scan-result-history")
     suspend fun getUserHistory (
-        @Query("fruitName") fruitName: String,
-        @Query("scanResult") scanResult: String
     ): GetUserHistoryResponse
 
     @GET("fruits")
     suspend fun getFruitsList () : GetFruitListResponse
 
-    @DELETE("/user/scan-result-history/{scanID}")
+    @DELETE("user/scan-result-history/{scanID}")
     suspend fun deleteHistoryByID (
         @Path("scanID") scanID: String
     ): DeleteHistoryByScanIDResponse

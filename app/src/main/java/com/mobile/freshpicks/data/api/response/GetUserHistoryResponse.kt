@@ -13,10 +13,15 @@ data class GetUserHistoryResponse (
     @field:SerializedName("userID")
     val userID: String,
 
-    @field:SerializedName("scanHistory")
-    val scanHistory: List<ScanHistoryItem>
+    @field:SerializedName("data")
+    val data: Data? = null
 )
 
+data class Data(
+
+    @field:SerializedName("scanHistory")
+    val scanHistory: List<ScanHistoryItem>? = emptyList()
+)
 data class ScanHistoryItem (
 
     @field:SerializedName("id")

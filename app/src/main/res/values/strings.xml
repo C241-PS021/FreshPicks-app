@@ -39,4 +39,5 @@
     <string name="oops">Oops!</string>
     <string name="yeah">Yeah!</string>
     <string name="no_results_saved">You haven\'t save any results yet</string>
+    <string name="fab_delete_button">Fab delete button</string>
 </resources>

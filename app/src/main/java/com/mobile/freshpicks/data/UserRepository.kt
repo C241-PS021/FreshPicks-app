@@ -70,10 +70,8 @@ class UserRepository (
     }
 
     suspend fun getUserHistory(
-        fruitName: String,
-        scanResult: String
     ): GetUserHistoryResponse {
-        return apiService.getUserHistory(fruitName, scanResult)
+        return apiService.getUserHistory()
     }
 
     suspend fun deleteHistoryByID(scanID: String): DeleteHistoryByScanIDResponse {
