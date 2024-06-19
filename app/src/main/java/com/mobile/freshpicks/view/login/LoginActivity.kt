@@ -52,14 +52,14 @@ class LoginActivity : AppCompatActivity() {
                 viewModel.login(email, password) { response ->
                     if (!response.error) {
                         viewModel.saveSession(UserModel(email, response.data?.token ?: ""))
-                        showAlertDialog("Yeah!", getString(R.string.login_success), true)
+                        showAlertDialog(getString(R.string.yeah), getString(R.string.login_success), true)
                     } else {
-                        showAlertDialog("Ups!", getString(R.string.wrong_account_details))
+                        showAlertDialog(getString(R.string.oops), getString(R.string.wrong_account_details))
                     }
                 }
             } else {
                 binding.loadingProgressBar.visibility = View.GONE
-                showAlertDialog("Ups!", getString(R.string.field_not_filled))
+                showAlertDialog(getString(R.string.oops), getString(R.string.field_not_filled))
             }
         }
         binding.clickableRegisterTv.setOnClickListener {
@@ -73,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
             setTitle(title)
             setMessage(message)
             if (isSuccess) {
-                setPositiveButton("Lanjut") { _, _ ->
+                setPositiveButton(getString(R.string.next)) { _, _ ->
                     val intent = Intent(context, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)

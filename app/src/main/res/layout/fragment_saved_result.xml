@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:text="@string/no_results_saved"
         android:gravity="center"
-        android:visibility="visible"
+        android:visibility="gone"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"

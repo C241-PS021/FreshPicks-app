@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#E0DDAA</color>
     <color name="primaryBg">#EEEDDE</color>
+    <color name="Fresh">#B0FC38</color>
+    <color name="Rotten">#FF2400</color>
 </resources>

@@ -1,20 +1,21 @@
 <resources>
     <string name="app_name">FreshPicks</string>
     <string name="app_title">FreshPicks</string>
-    <string name="name">Nama</string>
-    <string name="description">Deskripsi</string>
-    <string name="picture">Gambar</string>
+    <string name="name">Name</string>
+    <string name="description">description</string>
+    <string name="picture">picture</string>
     <string name="title_home">Home</string>
     <string name="title_detect">Detect</string>
     <string name="title_saved">Saved</string>
     <string name="saved_result">Saved result</string>
-    <string name="camera_button">camera button</string>
-    <string name="choose_from_galery">Choose from galery</string>
+    <string name="camera_button">Camera button</string>
+    <string name="choose_from_gallery">Choose from gallery</string>
     <string name="back">Back</string>
     <string name="take_a_picture">Take a picture</string>
     <string name="image_preview">Image preview</string>
     <string name="analyze">Analyze</string>
-    <string name="detection_result_description">Akurasi: %1$s \nKategori: %2$s</string>
+    <string name="detection_result_description_rotten">The %1$s is %2$s, it\'s a bad choice!\nLet\'s pick another one</string>
+    <string name="detection_result_description_fresh">The %1$s is %2$s, let\'s pick it!</string>
     <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
     <string name="email_error">Email is not valid</string>
     <string name="back_to_home">Back to home</string>
@@ -30,9 +31,9 @@
     <string name="welcome_back">Welcome Back!</string>
     <string name="desc_login_page">Please sign in to your account</string>
     <string name="new_user">New to FreshPicks?</string>
-    <string name="field_not_filled">Ada yang belum kamu isi nih, yuk di cek lagi!</string>
-    <string name="login_success">Login success! Let\'s head out to homescreen</string>
-    <string name="wrong_account_details">Password atau username salah atau mungkin akun kamu belum terdaftar</string>
+    <string name="field_not_filled">It looks like you forgot to fill some fields, please try again</string>
+    <string name="login_success">Login success! Let\'s head out to the Home Screen</string>
+    <string name="wrong_account_details">Password or Email might be wrong, or you haven\'t registered yet</string>
     <string name="register_success">You have successfully registered</string>
     <string name="registered_email">The email has been registered, please try another one</string>
     <string name="next">Continue</string>
@@ -40,4 +41,5 @@
     <string name="yeah">Yeah!</string>
     <string name="no_results_saved">You haven\'t save any results yet</string>
     <string name="fab_delete_button">Fab delete button</string>
+    <string name="fresh">%1$s</string>
 </resources>

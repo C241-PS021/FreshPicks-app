@@ -20,14 +20,32 @@
         app:srcCompat="@drawable/ic_place_holder" />
 
     <TextView
+        android:id="@+id/scanResultTV"
+        android:layout_width="128dp"
+        android:layout_height="82dp"
+        android:text="@string/fresh"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:padding="8dp"
+        android:background="@drawable/ic_edit_attributes_24"
+        android:backgroundTint="@color/Fresh"
+        app:layout_constraintTop_toBottomOf="@id/iv_preview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
         android:id="@+id/tv_result"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/detection_result_description"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="@string/detection_result_description_fresh"
         app:layout_constraintStart_toStartOf="@id/iv_preview"
-        app:layout_constraintTop_toBottomOf="@id/iv_preview" />
+        app:layout_constraintTop_toBottomOf="@id/scanResultTV" />
 
     <Button
         android:id="@+id/back_to_home"
